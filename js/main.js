@@ -1,6 +1,6 @@
-import { COUNT_CARDS_PHOTOS } from './constants.js';
-import { getCollectionCardsPhotos } from './data.js';
-import { renderCardsPhotos } from './renderCardsPhotos.js';
+import {COUNT_CARDS_PHOTOS} from './constants.js';
+import {getCollectionCardsPhotos} from './data.js';
+import {renderCardsPhotos} from './renderCardsPhotos.js';
 
 const dataCardsPhotos = getCollectionCardsPhotos(COUNT_CARDS_PHOTOS);
 
