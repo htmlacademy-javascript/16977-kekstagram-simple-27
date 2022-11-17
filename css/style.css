@@ -332,6 +332,7 @@ main {
   background-position: center;
 
   cursor: pointer;
+  transition: all .3s;
 }
 
 .img-upload__label::after {
@@ -350,6 +351,8 @@ main {
 
   -webkit-filter: drop-shadow(0 0 10px #943106);
           filter: drop-shadow(0 0 10px #943106);
+
+  transition: all .3s;
 }
 
 .img-upload__label:hover::after,
@@ -1296,6 +1299,13 @@ main {
 .error__button:active,
 .success__button:active {
   opacity: 0.6;
+}
+
+.text__error {
+  color: #fff;
+  background: #e90000;
+  max-width: 450px;
+  margin: 0 auto;
 }
 
 

@@ -20,16 +20,6 @@ const getRandomNumber = (min = 0, max = 0) => {
   }
 };
 
-const checkLengthDescription = (str = '', maxLength) => {
-  const minLength = 20;
-
-  if (str.length >= minLength && str.length <= maxLength) {
-    return true;
-  }
-
-  return false;
-};
-
 const getUniqueID = (countCardsPhotos) => {
   let count = 0;
 
@@ -64,4 +54,4 @@ const getRandomDescription = (items = []) => {
   return items.slice(-random);
 };
 
-export {getRandomNumber, checkLengthDescription, getUniqueID, getRandomDescription};
+export {getRandomNumber, getUniqueID, getRandomDescription};
