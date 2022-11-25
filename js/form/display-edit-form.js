@@ -1,8 +1,8 @@
 const body = document.body;
-const modalEditForm = document.querySelector('#upload-select-image');
-const uloadFileInput = document.querySelector('#upload-file');
 const modalEditPhoto = document.querySelector('.img-upload__overlay');
 const modalCloseBtn = document.querySelector('.img-upload__cancel');
+const uloadFileInput = document.querySelector('#upload-file');
+const modalEditForm = document.querySelector('#upload-select-image');
 
 const closeModalEditPhoto = () => {
   modalEditPhoto.classList.add('hidden');

@@ -19,4 +19,11 @@ const DESCRIPTION_CARDS_PHOTOS = [
   'Утром по сельской дороге, медленно шёл ночной герой, весь лохматый и седой, и улыбался...'
 ];
 
-export {COUNT_CARDS_PHOTOS, countLikes, countComments, DESCRIPTION_CARDS_PHOTOS};
+const STEP_CONTROL = 25;
+
+const restrictionsStepsControl = {
+  MIN: 25,
+  MAX: 100
+};
+
+export { COUNT_CARDS_PHOTOS, countLikes, countComments, DESCRIPTION_CARDS_PHOTOS, STEP_CONTROL, restrictionsStepsControl};
