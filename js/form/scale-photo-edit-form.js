@@ -1,4 +1,4 @@
-import { STEP_CONTROL, restrictionsStepsControl } from '../constants.js';
+import {STEP_CONTROL, restrictionsStepsControl} from '../constants.js';
 
 const controlSmallerElement = document.querySelector('.scale__control--smaller');
 const controlBiggerElement = document.querySelector('.scale__control--bigger');

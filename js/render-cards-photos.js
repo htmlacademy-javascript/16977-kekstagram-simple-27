@@ -1,4 +1,6 @@
+
 const renderCardsPhotos = (cards) => {
+  const containerCardsPhotos = document.querySelector('.pictures');
   const templateCardPhoto = document.querySelector('#picture').content.querySelector('.picture');
   const fragment = document.createDocumentFragment();
 
@@ -12,7 +14,7 @@ const renderCardsPhotos = (cards) => {
     fragment.append(element);
   });
 
-  return fragment;
+  containerCardsPhotos.append(fragment);
 };
 
 export {renderCardsPhotos};
