@@ -1,22 +1,18 @@
-const body = document.body;
-const modalEditPhoto = document.querySelector('.img-upload__overlay');
-const modalCloseBtn = document.querySelector('.img-upload__cancel');
+import {sendData} from '../api.js';
+import {showModalEditPhoto, closeModalEditPhoto} from './modal-form.js';
+
 const uloadFileInput = document.querySelector('#upload-file');
 const modalEditForm = document.querySelector('#upload-select-image');
+const submitButton = document.querySelector('.img-upload__submit');
 
-const closeModalEditPhoto = () => {
-  modalEditPhoto.classList.add('hidden');
-  body.classList.remove('modal-open');
-  uloadFileInput.value = '';
-
-  modalCloseBtn.removeEventListener('click', closeModalEditPhoto);
+const blockSubmitButton = () => {
+  submitButton.disabled = true;
+  submitButton.textContent = 'Сохраняю...';
 };
 
-const showModalEditPhoto = () => {
-  modalEditPhoto.classList.remove('hidden');
-  body.classList.add('modal-open');
-
-  modalCloseBtn.addEventListener('click', closeModalEditPhoto);
+const unblockSubmitButton = () => {
+  submitButton.disabled = false;
+  submitButton.textContent = 'Сохранить';
 };
 
 uloadFileInput.addEventListener('change', showModalEditPhoto);
@@ -33,12 +29,28 @@ const pristine = new Pristine(modalEditForm, {
   errorTextClass: 'text__error',
 });
 
-modalEditForm.addEventListener('submit', (evt) => {
-  evt.preventDefault();
+const setUserFormSubmit = (onSuccess, onFail) => {
+  modalEditForm.addEventListener('submit', (evt) => {
+    evt.preventDefault();
 
-  const isValidLengthDescField = pristine.validate();
+    const isValidLengthDescField = pristine.validate();
 
-  if (isValidLengthDescField) {
-    evt.currentTarget.submit();
-  }
-});
+    if (isValidLengthDescField) {
+      blockSubmitButton();
+      sendData(
+        () => {
+          closeModalEditPhoto();
+          onSuccess();
+          unblockSubmitButton();
+        },
+        () => {
+          onFail('Не удалось отправить форму. Попробуйте ещё раз');
+          unblockSubmitButton();
+        },
+        new FormData(evt.target),
+      );
+    }
+  });
+};
+
+export {setUserFormSubmit};

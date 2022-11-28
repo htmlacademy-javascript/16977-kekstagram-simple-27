@@ -1,11 +1,9 @@
-import {COUNT_CARDS_PHOTOS} from './constants.js';
-import {getCollectionCardsPhotos} from './data.js';
+import {showErrorAlert} from './util.js';
+import {getData} from './api.js';
 import {renderCardsPhotos} from './render-cards-photos.js';
 import './init-edit-form.js';
+import {setUserFormSubmit} from './form/display-edit-form.js';
+import {setSuccessNotafication, setErrorNotafication} from './form/modal-form.js';
 
-const dataCardsPhotos = getCollectionCardsPhotos(COUNT_CARDS_PHOTOS);
-
-const containerCardsPhotos = document.querySelector('.pictures');
-const cardsPhotosList = renderCardsPhotos(dataCardsPhotos);
-
-containerCardsPhotos.append(cardsPhotosList);
+getData(renderCardsPhotos, showErrorAlert);
+setUserFormSubmit(setSuccessNotafication, setErrorNotafication);

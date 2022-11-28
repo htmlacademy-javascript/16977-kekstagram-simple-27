@@ -1,57 +1,28 @@
-const getRandomNumber = (min = 0, max = 0) => {
-  if (typeof min !== 'number' || typeof max !== 'number' || (min < 0 && max < 0)) {
-    return NaN;
-  }
+const showErrorAlert = (text) => {
+  const alertContainer = document.createElement('div');
+  alertContainer.style.position = 'fixed';
+  alertContainer.style.left = '0';
+  alertContainer.style.top = '0';
+  alertContainer.style.bottom = '0';
+  alertContainer.style.zIndex = '9999';
+  alertContainer.style.display = 'flex';
+  alertContainer.style.justifyContent = 'center';
+  alertContainer.style.alignItems = 'center';
+  alertContainer.style.width = '100%';
+  alertContainer.style.height = '100vh';
+  alertContainer.style.padding = '10px 15px';
+  alertContainer.style.fontSize = '20px';
+  alertContainer.style.backgroundColor = 'rgba(0,0,0,.9)';
 
-  if (min < 0) {
-    min = 0;
-  }
+  alertContainer.textContent = text;
 
-  if (max < 0) {
-    max = 0;
-  }
+  document.body.append(alertContainer);
+  document.body.style.overflow = 'hidden';
 
-  if (min > max) {
-    [min, max] = [max, min];
-  }
-
-  if (min >= 0 && max >= 0) {
-    return Math.floor(min + Math.random() * (max + 1 - min));
-  }
+  setTimeout(() => {
+    alertContainer.remove();
+    document.body.style.overflow = 'auto';
+  }, 5000);
 };
 
-const getUniqueID = (countCardsPhotos) => {
-  let count = 0;
-
-  const nums = Array.from({length: countCardsPhotos}, () => {
-    count += 1;
-
-    return count;
-  });
-
-  for (let i = nums.length - 1; i > 0; i--) {
-    const currentNum = nums[i];
-    const randomNum = Math.floor(Math.random() * (i + 1));
-
-    nums[i] = nums[randomNum];
-    nums[randomNum] = currentNum;
-  }
-
-  return nums;
-};
-
-const getRandomDescription = (items = []) => {
-  if (items.length === 0) {
-    return null;
-  }
-
-  const random = Math.floor(Math.random() * items.length);
-
-  if (random > (items.length / 2)) {
-    return items.slice(0, random);
-  }
-
-  return items.slice(-random);
-};
-
-export {getRandomNumber, getUniqueID, getRandomDescription};
+export {showErrorAlert};
